@@ -47,6 +47,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tzdata \
     sudo\
     jq\
+    curl\
 && rm -rf /var/lib/apt/lists/*
 
 
