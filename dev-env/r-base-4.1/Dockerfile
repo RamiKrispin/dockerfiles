@@ -4,9 +4,9 @@ LABEL maintainer="Rami Krispin <rami.krispin@gmail.com>"
 
 # Setting the R version
 
-ENV R_VERSION_MAJOR=4
-ENV R_VERSION_MINOR=0
-ENV R_VERSION_PATCH=0
+ARG R_VERSION_MAJOR=4
+ARG R_VERSION_MINOR=0 
+ARG R_VERSION_PATCH=0 
 ENV CONFIGURE_OPTIONS="--with-cairo --with-jpeglib --enable-R-shlib --with-blas --with-lapack"
 ENV RENV_VERSION 0.9.3
 
@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gfortran \
     git \
     g++ \
+    psmisc \
+    procps \
+    python-setuptools \
     libreadline-dev \
     libx11-dev \
     libxt-dev \
@@ -48,7 +51,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     sudo\
     jq\
     curl\
+    file \
+    libapparmor1 \
+    libclang-dev \
+    libedit2 \
+    lsb-release \
+    multiarch-support \
+    python-setuptools \
+    libv8-dev \
+    r-cran-rcpp \
+    r-cran-inline \
 && rm -rf /var/lib/apt/lists/*
+
+
+# Setting the encoding to UTF-8
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgit2-dev \
