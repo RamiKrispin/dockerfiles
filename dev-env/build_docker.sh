@@ -26,11 +26,11 @@ fi
 
 echo "R version is set to $major.$minor.$patch"
 
-docker build --build-arg R_VERSION_MAJOR=$major --build-arg R_VERSION_MINOR=$minor --build-arg R_VERSION_PATCH=$patch . -t docker.apple.com/rkrispin/lh_baser:v$major.$minor.$patch
+docker build --build-arg R_VERSION_MAJOR=$major --build-arg R_VERSION_MINOR=$minor --build-arg R_VERSION_PATCH=$patch . -t docker.com/rkrispin/baser:v$major.$minor.$patch
 
 if [[ $? = 0 ]] ; then
     echo "Pushing docker..."
-    docker push docker.apple.com/rkrispin/lh_baser:v$major.$minor.$patch
+    docker push docker.com/rkrispin/baser:v$major.$minor.$patch
 else
     echo "Docker build failed"
 fi
