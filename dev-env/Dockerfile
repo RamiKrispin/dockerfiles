@@ -16,53 +16,53 @@ ENV TZ=UTC
 
 # Install dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    apt-utils\
-    gfortran \
-    git \
-    g++ \
-    psmisc \
-    procps \
-    python-setuptools \
-    libreadline-dev \
-    libx11-dev \
-    libxt-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libcairo2-dev \
-    libcurl4-openssl-dev \
-    libssl-dev \
-    libxml2-dev \
-    libudunits2-dev \
-    libgdal-dev \
-    libbz2-dev \
-    libzstd-dev \
-    liblzma-dev \
-    libpcre2-dev \
-    locales \
-    openjdk-8-jdk \
-    screen \
-    texinfo \
-    texlive \
-    texlive-fonts-extra \
-    vim \
-    wget \
-    xvfb \
-    tzdata \
-    sudo\
-    jq\
-    curl\
-    file \
-    libapparmor1 \
-    libclang-dev \
-    libedit2 \
-    lsb-release \
-    multiarch-support \
-    python-setuptools \
-    libv8-dev \
-    r-cran-rcpp \
-    r-cran-inline \
-&& rm -rf /var/lib/apt/lists/*
-
+        apt-utils\
+        gfortran \
+        git \
+        g++ \
+        psmisc \
+        procps \
+        python-setuptools \
+        libreadline-dev \
+        libx11-dev \
+        libxt-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libcairo2-dev \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        libxml2-dev \
+        libudunits2-dev \
+        libgdal-dev \
+        libbz2-dev \
+        libzstd-dev \
+        liblzma-dev \
+        libpcre2-dev \
+        locales \
+        openjdk-8-jdk \
+        screen \
+        texinfo \
+        texlive \
+        texlive-fonts-extra \
+        vim \
+        wget \
+        xvfb \
+        tzdata \
+        sudo\
+        jq\
+        curl\
+        file \
+        libapparmor1 \
+        libclang-dev \
+        libedit2 \
+        lsb-release \
+        multiarch-support \
+        python-setuptools \
+        libv8-dev \
+        r-cran-rcpp \
+        r-cran-inline \
+        libmagick++-dev \
+    && rm -rf /var/lib/apt/lists/*
 
 # Setting the encoding to UTF-8
 RUN locale-gen en_US.UTF-8
@@ -90,9 +90,12 @@ RUN ./configure ${CONFIGURE_OPTIONS} && \
 # Updating the git version
 RUN apt-get update && \
       apt-get -y install sudo
+RUN git --version
 
 RUN sudo apt-get install software-properties-common -y
 RUN sudo add-apt-repository ppa:git-core/ppa && \
 	sudo apt-get update -y && \
 	sudo apt-get install git -y
+
+RUN git --version
 
